@@ -1,0 +1,19 @@
+Dinu Marian Alexandru
+Grupa 334 CC
+Tema 3
+APD
+
+Detalii implementare:
+
+	Am creat o structura pentru numerele complexe pe care am folosit-o in implementarea
+	celor 2 algoritmi.
+	Doar procesul root are acces la cele 2 fisiere primite ca parametri in linia de
+	comanda.
+	Dupa citirea datelor din fiser, se face broadcast si astfel celelalte procese
+	intra in posesia datelor din fisierul de intrare. Se imparte matricea mare (H * W)
+	pe linii in chunk-uri egale pentru toate procesele. Fiecare proces calculeaza bucata
+	din matricea finala care i-a fost repartizata si o trimite apoi la root. Inclusiv root-ul
+	isi calculeaza propria bucata, dar nu o trimite mai departe.
+	Procesul root primeste toate bucatile linie cu linie de la celelalte procese si le
+	asambleaza, formand astfel matricea mare aferenta imaginii .pgm pe care tot el o scrie
+	in fisier.
